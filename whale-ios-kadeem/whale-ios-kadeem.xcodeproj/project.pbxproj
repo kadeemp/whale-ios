@@ -16,9 +16,12 @@
 		5C6A9B981E8055B200FE189B /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B951E8055B200FE189B /* Networking */; };
 		5C6A9B991E8055B200FE189B /* UI in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B961E8055B200FE189B /* UI */; };
 		5C6A9B9B1E8070D000FE189B /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B9A1E8070D000FE189B /* profileIcon.png */; };
+		6AD089E67BCDC366F03A3D7D /* Pods_whale_ios_kadeem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB0A08EC21F549E2220A78D /* Pods_whale_ios_kadeem.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12A6B829C65D8A48563E0A39 /* Pods-whale-ios-kadeem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whale-ios-kadeem.release.xcconfig"; path = "Pods/Target Support Files/Pods-whale-ios-kadeem/Pods-whale-ios-kadeem.release.xcconfig"; sourceTree = "<group>"; };
+		277A0D880F46ACC5DD59EF6E /* Pods-whale-ios-kadeem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whale-ios-kadeem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whale-ios-kadeem/Pods-whale-ios-kadeem.debug.xcconfig"; sourceTree = "<group>"; };
 		5C6A9B7F1E8054F000FE189B /* whale-ios-kadeem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "whale-ios-kadeem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6A9B821E8054F000FE189B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C6A9B841E8054F000FE189B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		5C6A9B951E8055B200FE189B /* Networking */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Networking; sourceTree = "<group>"; };
 		5C6A9B961E8055B200FE189B /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UI; sourceTree = "<group>"; };
 		5C6A9B9A1E8070D000FE189B /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
+		7AB0A08EC21F549E2220A78D /* Pods_whale_ios_kadeem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whale_ios_kadeem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD089E67BCDC366F03A3D7D /* Pods_whale_ios_kadeem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +53,8 @@
 			children = (
 				5C6A9B811E8054F000FE189B /* whale-ios-kadeem */,
 				5C6A9B801E8054F000FE189B /* Products */,
+				E01A825FBE1F5BF7331C2DC2 /* Pods */,
+				7C45864A1A732050287FCA7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +83,23 @@
 			path = "whale-ios-kadeem";
 			sourceTree = "<group>";
 		};
+		7C45864A1A732050287FCA7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AB0A08EC21F549E2220A78D /* Pods_whale_ios_kadeem.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E01A825FBE1F5BF7331C2DC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				277A0D880F46ACC5DD59EF6E /* Pods-whale-ios-kadeem.debug.xcconfig */,
+				12A6B829C65D8A48563E0A39 /* Pods-whale-ios-kadeem.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C6A9B911E8054F000FE189B /* Build configuration list for PBXNativeTarget "whale-ios-kadeem" */;
 			buildPhases = (
+				7A8C97577CA0E8D3B2FDF7EB /* [CP] Check Pods Manifest.lock */,
 				5C6A9B7B1E8054F000FE189B /* Sources */,
 				5C6A9B7C1E8054F000FE189B /* Frameworks */,
 				5C6A9B7D1E8054F000FE189B /* Resources */,
+				B4515FB31CF9F9827C761CE3 /* [CP] Embed Pods Frameworks */,
+				48A4A3A84C1959589CB68482 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,6 +174,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48A4A3A84C1959589CB68482 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-whale-ios-kadeem/Pods-whale-ios-kadeem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A8C97577CA0E8D3B2FDF7EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4515FB31CF9F9827C761CE3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-whale-ios-kadeem/Pods-whale-ios-kadeem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5C6A9B7B1E8054F000FE189B /* Sources */ = {
@@ -275,6 +350,7 @@
 		};
 		5C6A9B921E8054F000FE189B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 277A0D880F46ACC5DD59EF6E /* Pods-whale-ios-kadeem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7G8EV52YPP;
@@ -288,6 +364,7 @@
 		};
 		5C6A9B931E8054F000FE189B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12A6B829C65D8A48563E0A39 /* Pods-whale-ios-kadeem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7G8EV52YPP;
