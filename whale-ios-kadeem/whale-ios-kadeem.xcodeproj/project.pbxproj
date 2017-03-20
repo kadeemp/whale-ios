@@ -15,6 +15,7 @@
 		5C6A9B971E8055B200FE189B /* Extensions in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B941E8055B200FE189B /* Extensions */; };
 		5C6A9B981E8055B200FE189B /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B951E8055B200FE189B /* Networking */; };
 		5C6A9B991E8055B200FE189B /* UI in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B961E8055B200FE189B /* UI */; };
+		5C6A9B9B1E8070D000FE189B /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B9A1E8070D000FE189B /* profileIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5C6A9B941E8055B200FE189B /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Extensions; sourceTree = "<group>"; };
 		5C6A9B951E8055B200FE189B /* Networking */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Networking; sourceTree = "<group>"; };
 		5C6A9B961E8055B200FE189B /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UI; sourceTree = "<group>"; };
+		5C6A9B9A1E8070D000FE189B /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				5C6A9B821E8054F000FE189B /* AppDelegate.swift */,
 				5C6A9B841E8054F000FE189B /* ViewController.swift */,
 				5C6A9B861E8054F000FE189B /* Main.storyboard */,
+				5C6A9B9A1E8070D000FE189B /* profileIcon.png */,
 				5C6A9B891E8054F000FE189B /* Assets.xcassets */,
 				5C6A9B8B1E8054F000FE189B /* LaunchScreen.storyboard */,
 				5C6A9B8E1E8054F000FE189B /* Info.plist */,
@@ -136,6 +139,7 @@
 				5C6A9B8D1E8054F000FE189B /* LaunchScreen.storyboard in Resources */,
 				5C6A9B8A1E8054F000FE189B /* Assets.xcassets in Resources */,
 				5C6A9B971E8055B200FE189B /* Extensions in Resources */,
+				5C6A9B9B1E8070D000FE189B /* profileIcon.png in Resources */,
 				5C6A9B981E8055B200FE189B /* Networking in Resources */,
 				5C6A9B991E8055B200FE189B /* UI in Resources */,
 				5C6A9B881E8054F000FE189B /* Main.storyboard in Resources */,
