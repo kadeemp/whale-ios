@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  whale-ios
+//  whale-ios-kadeem
 //
 //  Created by Kadeem Palacios on 3/20/17.
 //  Copyright © 2017 Kadeem Palacios. All rights reserved.
