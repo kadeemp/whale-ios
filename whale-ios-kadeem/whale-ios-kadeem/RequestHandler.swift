@@ -1,6 +1,7 @@
 import UIKit
 import Alamofire
 import Moya
+import SwiftyJSON
 
 //protocol TargetType {
 //    var parameters: Parameters {get set}
