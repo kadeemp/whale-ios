@@ -52,13 +52,22 @@ class APIClient {
                                                      password: password)
         
         Alamofire.request(urlRequestConvertible).responseJSON { (response) in
+           print(response)
+            print("---------------")
+            print("---------------")
+            print("---------------")
             switch response.result {
             case .success:
                 
                 let data = JSON(data: response.data!)
+                
+                
                 guard let user = UserModel(data: data) else {
                     fatalError("User data does not exist")
                 }
+                
+                let header = response.response!.allHeaderFields["Authorization"]!
+                print (header)
                 
                 completion?(user)
                 

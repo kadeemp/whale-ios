@@ -13,7 +13,7 @@ enum Router: URLRequestConvertible {
     
     //MARK:- Base URL
     
-    var baseURL:Strng = "https://whale2-elixir.herokuapp.com/api/v1"
+   static let baseURL: String = "https://whale2-elixir.herokuapp.com/api/v1"
     
     //MARK:- Router Case Delcaration
     case getUsers
@@ -87,7 +87,7 @@ enum Router: URLRequestConvertible {
                 return [:]
                 
             //TODO: add cases for .createUser, .postAnswer, .postQuestion, .
-            case .loginUser:
+            case .loginUser(let email, let password):
                 return ["email": email,
                 "password":password]
             default:
@@ -106,7 +106,7 @@ enum Router: URLRequestConvertible {
         }()
         
 //TODO:- Rewrite comments
-    let url = try Router.baseUrl.asURL()
+    let url = try Router.baseURL.asURL()
 
     // Creating a request
         

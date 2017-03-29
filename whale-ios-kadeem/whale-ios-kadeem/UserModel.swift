@@ -26,10 +26,10 @@ class UserModel{
         guard let username = data["username"].string else {
             return nil
         }
-        guard let firstName = data["firstName"].string else {
+        guard let firstName = data["first_name"].string else {
             return nil
         }
-        guard let lastName = data["lastName"].string else {
+        guard let lastName = data["last_name"].string else {
             return nil
         }
         guard let email = data["email"].string else {
