@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.4.0)
   - Gloss (1.2.1)
   - KeychainAccess (3.0.1)
+  - KeychainSwift (7.0.0)
   - Kingfisher (3.5.2)
   - Moya (8.0.3):
     - Moya/Core (= 8.0.3)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Gloss (~> 1.2)
   - KeychainAccess
+  - KeychainSwift (~> 7.0)
   - Kingfisher (~> 3.0)
   - Moya
   - SwiftyJSON
@@ -23,11 +25,12 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Gloss: 9ab33b8ede01e4232571d43a6bf9259b85d1de69
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
   Kingfisher: 9950e382c500b6834ce004c7c4131c444e90c3a1
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: a3b8154c890b91a300dfd338ffeade6aae8cf05d
+PODFILE CHECKSUM: ae03fc5bd3f3b8ba6597f50a189d0d9d5a22d31d
 
 COCOAPODS: 1.2.0
