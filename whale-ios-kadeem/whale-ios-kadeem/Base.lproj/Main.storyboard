@@ -50,6 +50,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OrZ-HI-8Qj"/>
                                     <segue destination="Nw2-RL-Ttu" kind="show" id="2k3-Cj-nIU"/>
                                 </connections>
                             </button>
@@ -81,6 +82,10 @@
                             <constraint firstItem="lZD-gh-NMr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="w1T-qE-CeP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="NVx-sN-VPU" id="02y-hj-Kzt"/>
+                        <outlet property="passwordTextField" destination="lZD-gh-NMr" id="yZg-rQ-6FY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

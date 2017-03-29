@@ -43,9 +43,9 @@ import SwiftyJSON
 //    
 //}
 
-class RequestHandler {
+class APIClient {
     
-    static let sharedInstance = RequestHandler()
+   
     
     //MARK:- Variable Declaration
     var parameters: [String:Any]? = [
@@ -60,23 +60,4 @@ class RequestHandler {
 //    
     //MARK:- LOGIN
     
-  func loginUser(){
-        let url = "https://whale2-elixir.herokuapp.com/api/v1/sessions"
-        
-        Alamofire.request(url , method: .post, parameters: parameters , encoding: JSONEncoding.default ).responseJSON { response in
-            
-            print(response.request)  // original URL request
-            print("-----------")
-            print(response.response) // HTTP URL response
-            print("-----------")
-            print(response.data)     // server data
-            print("-----------")
-            print(response.result)   // result of response serialization
-            print("-----------")
-            
-            if let value = (response.response) {
-               print(value)
-            }
-        }
     }
-}

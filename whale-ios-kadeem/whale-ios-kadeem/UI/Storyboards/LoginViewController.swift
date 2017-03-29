@@ -12,10 +12,12 @@ import Alamofire
 class LoginViewController: UIViewController {
     
     
+    @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        RequestHandler.sharedInstance.loginUser()
+        
         
     }
 
@@ -25,5 +27,17 @@ class LoginViewController: UIViewController {
     }
 
 
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        guard let email = emailTextField.text else {
+            return
+        }
+        guard let password = passwordTextField.text else {
+            return
+        }
+        
+        RequestHandler.loginUser(email:email, password:password) {
+            
+        }
+    }
 }
 
