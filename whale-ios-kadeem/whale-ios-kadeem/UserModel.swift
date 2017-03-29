@@ -32,6 +32,9 @@ class UserModel{
         guard let lastName = data["lastName"].string else {
             return nil
         }
+        guard let email = data["email"].string else {
+            return nil
+        }
         
         // Accessing the profile picture
         guard let imageURLAddress = data["image_url"].string else {
@@ -41,9 +44,8 @@ class UserModel{
         guard let imageURL = URL(string: imageURLAddress) else {
             return nil
         }
-        guard let email = data["email"].string else {
-            return nil
-        }
+       
+        
     //MARK:- Assignment
         
         self.username = username

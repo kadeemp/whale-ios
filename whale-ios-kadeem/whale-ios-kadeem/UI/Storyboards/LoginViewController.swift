@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+
 
 class LoginViewController: UIViewController {
     
@@ -35,7 +35,8 @@ class LoginViewController: UIViewController {
             return
         }
         
-        RequestHandler.loginUser(email:email, password:password) {
+        APIClient.loginUser(email:email, password:password) { (JSON) in
+            print(JSON)
             
         }
     }

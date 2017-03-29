@@ -9,11 +9,130 @@
 import UIKit
 import Alamofire
 
-class Router: URLRequestConvertible {
+enum Router: URLRequestConvertible {
     
-    //Base URL of the API
+    //MARK:- Base URL
     
     var baseURL:Strng = "https://whale2-elixir.herokuapp.com/api/v1"
+    
+    //MARK:- Router Case Delcaration
+    case getUsers
+    case getAnswers
+    case getAnswerComments(String)
+    case getAnswerLikes(String)
+    case getMyQuestions
+    
+    case createUser(firstName:String,lastName:String, email:String,password:String, username:String)
+    case postQuestions
+    case postAnswer(String)
+    
+    case loginUser(email:String, password:String)
+    
+    //MARK:- HTTP Method Cases
+    var method: HTTPMethod {
+        switch self {
+            case .getUsers,
+                 .getAnswers,
+                 .getAnswerComments,
+                 .getAnswerLikes,
+                 .getMyQuestions:
+            return .get
+            
+            case .createUser,
+                 .loginUser,
+                 .postAnswer,
+                 .postQuestions:
+            return .post
+
+        }
+    }
+    
+    //MARK:- URL Path Cases
+    var path: String {
+        switch self {
+        case .getUsers:
+            return "/users"
+        case .createUser:
+            return "/users"
+        case .getAnswers:
+            return "/answers"
+        case .loginUser:
+            return "/sessions"
+        case .getAnswerComments(let answer_id):
+            return "/answers/\(answer_id)/comments"
+        case .getAnswerLikes(let question_id):
+            return "/answers/\(question_id)/likes"
+        case .postAnswer(let question_id):
+            return "questions/\(question_id)/answers"
+        case .getMyQuestions:
+            return "/questions"
+        case .postQuestions:
+            return "/questions"
+            
+        }
+    }
+    
+    //MARK:- URL Request
+    
+    
+    func asURLRequest() throws -> URLRequest {
+    //URL Parameters
+        let parameters : [String:Any] = {
+            switch self {
+            case    .getUsers,
+                    .getAnswers,
+                    .getAnswerComments,
+                    .getAnswerLikes,
+                    .getMyQuestions:
+                return [:]
+                
+            //TODO: add cases for .createUser, .postAnswer, .postQuestion, .
+            case .loginUser:
+                return ["email": email,
+                "password":password]
+            default:
+                return[:]
+            }
+            
+        }()   // <- () Ask why this is here
+        
+        
+        //Add cases when headers become necessary
+        let headers: [String:String] = {
+            switch self {
+            default:
+                return [:]
+            }
+        }()
+        
+//TODO:- Rewrite comments
+    let url = try Router.baseUrl.asURL()
+
+    // Creating a request
+        
+    var request = URLRequest(url: url.appendingPathComponent(path))
+        
+    // Mutates the request to change the HTTPRequest method
+        
+    request.httpMethod = method.rawValue
+    
+    // Adds the headers to the request
+        
+    headers.forEach { (key, value) in
+        request.setValue(value, forHTTPHeaderField: key)
+    }
+    
+    // Sends the request
+    switch self {
+    case .createUser:
+        return try JSONEncoding.default.encode(request, with: parameters)
+    default:
+        return try URLEncoding.default.encode(request, with: parameters)
+    }
+        
+
+    
+    }
     
 //    static func loginUser(email:String, password:String ){
 //        let url = "https://whale2-elixir.herokuapp.com/api/v1/sessions"
