@@ -64,7 +64,7 @@ class RequestHandler {
         
         Alamofire.request(url , method: .post, parameters: parameters , encoding: JSONEncoding.default ).responseJSON { response in
             
-            //print(response.request)  // original URL request
+            print(response.request)  // original URL request
             print("-----------")
             print(response.response) // HTTP URL response
             print("-----------")

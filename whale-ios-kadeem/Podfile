@@ -11,4 +11,5 @@ target 'whale-ios-kadeem' do
     pod 'Kingfisher', '~> 3.0'
     pod 'KeychainAccess'
     pod 'Moya'
+    pod 'SwiftyJSON'
 end
