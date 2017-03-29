@@ -8,4 +8,7 @@ target 'whale-ios-kadeem' do
   # Pods for whale-ios-kadeem
     pod 'Gloss', '~> 1.2'
     pod 'Alamofire', '~> 4.4'
+    pod 'Kingfisher', '~> 3.0'
+    pod 'KeychainAccess'
+    pod 'Moya'
 end
