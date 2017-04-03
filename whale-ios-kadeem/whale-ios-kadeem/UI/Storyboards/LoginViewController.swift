@@ -39,6 +39,12 @@ class LoginViewController: UIViewController {
             print(JSON)
             
         }
+        
+        //TODO:- Get segue working programatica
+        let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "TabVC")
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 

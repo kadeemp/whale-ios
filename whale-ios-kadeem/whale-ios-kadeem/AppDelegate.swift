@@ -7,15 +7,37 @@
 //
 
 import UIKit
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let keychain = KeychainSwift()
+    var token:String? = nil
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let TabViewController = storyboard.instantiateViewController(withIdentifier: "TabVC")
+        let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+
+
+        try token = keychain.get("token")
+        if  token != nil {
+        
+            self.window?.rootViewController = TabViewController
+            self.window?.makeKeyAndVisible()
+            
+        }else {
+            self.window?.rootViewController = LoginViewController
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
 

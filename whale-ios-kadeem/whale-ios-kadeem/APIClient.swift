@@ -1,7 +1,8 @@
 import UIKit
 import Alamofire
-import Moya
+
 import SwiftyJSON
+import KeychainSwift
 
 //protocol TargetType {
 //    var parameters: Parameters {get set}
@@ -58,7 +59,7 @@ class APIClient {
             print("---------------")
             switch response.result {
             case .success:
-                
+                let keychain = KeychainSwift()
                 let data = JSON(data: response.data!)
                 
                 
@@ -66,10 +67,12 @@ class APIClient {
                     fatalError("User data does not exist")
                 }
                 
-                let header = response.response!.allHeaderFields["Authorization"]!
+              let header = response.response!.allHeaderFields["Authorization"]!
                 print (header)
-                
+                let headerHolder = String(describing: header)
+                keychain.set(headerHolder, forKey: "token")
                 completion?(user)
+
                 
             case .failure:
                 return
