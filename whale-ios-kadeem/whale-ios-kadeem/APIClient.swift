@@ -46,6 +46,11 @@ import KeychainSwift
 
 class APIClient {
     
+    //TODO:- Create User
+    //TODO:- Request Answers by page
+    //TODO:- Req Answer comments
+    //TODO:- Req Answer Likes
+    
    
     static func loginUser(email: String, password: String, completion: ((UserModel) -> Void)?) {
         
@@ -68,22 +73,61 @@ class APIClient {
                 }
                 
               let header = response.response!.allHeaderFields["Authorization"]!
-                print (header)
+
                 let headerHolder = String(describing: header)
                 keychain.set(headerHolder, forKey: "token")
                 completion?(user)
+                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "TabVC")
+                
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.window?.rootViewController = vc
 
                 
             case .failure:
+                print("error occurred")
                 return
             }
         }
     }
+    static func createUser(firstName:String,lastName:String, email:String,password:String, username:String, completion: ((UserModel) -> Void)?) {
+        
+        let urlRequestConvertible = Router.createUser(firstName:firstName,lastName:lastName, email:email,password:password, username:username)
+        
+        Alamofire.request(urlRequestConvertible).responseJSON { (response) in
+            print(response)
+            print("---------------")
+            print("---------------")
+            print("---------------")
+            switch response.result {
+            case .success:
+                let keychain = KeychainSwift()
+                let data = JSON(data: response.data!)
+                
+                
+                guard let user = UserModel(data: data) else {
+                    fatalError("User data does not exist")
+                }
+                
+                let header = response.response!.allHeaderFields["Authorization"]!
+                
+                let headerHolder = String(describing: header)
+                keychain.set(headerHolder, forKey: "token")
+                completion?(user)
+                let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "TabVC")
+                
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.window?.rootViewController = vc
+                
+                
+            case .failure:
+                print("error occurred")
+                return
+            }
+        }
+    }
+
     //MARK:- Variable Declaration
-    var parameters: [String:Any]? = [
-        "email":"fake@email.com",
-        "password":"password"
-    ]
+
 //    var apiClient: APIClient
 //    
 //    init(client: APIClient) {
