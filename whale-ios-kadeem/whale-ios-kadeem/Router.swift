@@ -86,10 +86,18 @@ enum Router: URLRequestConvertible {
                     .getMyQuestions:
                 return [:]
                 
-            //TODO: add cases for .createUser, .postAnswer, .postQuestion, .
+            //TODO: add cases for .createUser, .postAnswer, .postQuestion, .Answers
             case .loginUser(let email, let password):
                 return ["email": email,
-                "password":password]
+                        "password":password];
+            case .createUser(let firstName,let lastName, let email,let password, let username):
+                return ["firstName": firstName,"lastName":lastName, "email": email,
+                        "password":password,"username":username];
+            case .getAnswers():
+                return ["per_page": 10,
+            "IntPage": 0]
+             
+
             default:
                 return[:]
             }

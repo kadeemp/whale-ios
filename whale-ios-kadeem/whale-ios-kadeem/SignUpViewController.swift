@@ -44,8 +44,7 @@ class SignUpViewController: UIViewController {
         }
         APIClient.createUser(firstName: firstName, lastName: lastName, email: email, password: password, username: username)  { (JSON) in
             print(JSON)
-            
-    }
+
     }
 
 //    self.username = username
@@ -64,4 +63,5 @@ class SignUpViewController: UIViewController {
     }
     */
 
+}
 }

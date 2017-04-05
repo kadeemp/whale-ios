@@ -102,6 +102,7 @@ class APIClient {
             case .success:
                 let keychain = KeychainSwift()
                 let data = JSON(data: response.data!)
+                print(data)
                 
                 
                 guard let user = UserModel(data: data) else {
@@ -111,7 +112,9 @@ class APIClient {
                 let header = response.response!.allHeaderFields["Authorization"]!
                 
                 let headerHolder = String(describing: header)
+                
                 keychain.set(headerHolder, forKey: "token")
+                
                 completion?(user)
                 let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "TabVC")
                 
@@ -124,6 +127,9 @@ class APIClient {
                 return
             }
         }
+    }
+    static func getAnswers() {
+        
     }
 
     //MARK:- Variable Declaration

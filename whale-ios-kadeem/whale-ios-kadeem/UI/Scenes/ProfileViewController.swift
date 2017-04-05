@@ -26,6 +26,11 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logoutPressed(_ sender: Any) {
         keychain.clear()
+        let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "LoginViewController")
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window?.rootViewController = vc
+    }
     }
 
     /*
@@ -38,4 +43,4 @@ class ProfileViewController: UIViewController {
     }
     */
 
-}
+

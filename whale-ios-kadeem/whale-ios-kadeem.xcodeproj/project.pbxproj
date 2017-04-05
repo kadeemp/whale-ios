@@ -38,6 +38,7 @@
 		5CBD97491E9240AA00BAC237 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD97481E9240AA00BAC237 /* ProfileViewController.swift */; };
 		5CBD974B1E92AED900BAC237 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD974A1E92AED900BAC237 /* AnswerViewController.swift */; };
 		5CBD974D1E92D09600BAC237 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD974C1E92D09600BAC237 /* SignUpViewController.swift */; };
+		5CBD976D1E9569ED00BAC237 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD976C1E9569ED00BAC237 /* AnswerModel.swift */; };
 		5CD423BD1E8B98CA00478014 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD423BC1E8B98CA00478014 /* Router.swift */; };
 		5CD423BF1E8BA17200478014 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD423BE1E8BA17200478014 /* UserModel.swift */; };
 		F810D1CA50562A2069C27D52 /* Pods_whale_ios_kadeem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693211D78CB04336A6F0C56E /* Pods_whale_ios_kadeem.framework */; };
@@ -78,6 +79,7 @@
 		5CBD97481E9240AA00BAC237 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = UI/Scenes/ProfileViewController.swift; sourceTree = "<group>"; };
 		5CBD974A1E92AED900BAC237 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		5CBD974C1E92D09600BAC237 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5CBD976C1E9569ED00BAC237 /* AnswerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		5CD423BC1E8B98CA00478014 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5CD423BE1E8BA17200478014 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		693211D78CB04336A6F0C56E /* Pods_whale_ios_kadeem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whale_ios_kadeem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				5CD423BE1E8BA17200478014 /* UserModel.swift */,
+				5CBD976C1E9569ED00BAC237 /* AnswerModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				5CBD97491E9240AA00BAC237 /* ProfileViewController.swift in Sources */,
 				5CBD974B1E92AED900BAC237 /* AnswerViewController.swift in Sources */,
 				5CBD974D1E92D09600BAC237 /* SignUpViewController.swift in Sources */,
+				5CBD976D1E9569ED00BAC237 /* AnswerModel.swift in Sources */,
 				5CD423BD1E8B98CA00478014 /* Router.swift in Sources */,
 				5C9569ED1E85D29500F2B524 /* LoginViewController.swift in Sources */,
 				5C709C101E89A1D300B23C8A /* APIClient.swift in Sources */,

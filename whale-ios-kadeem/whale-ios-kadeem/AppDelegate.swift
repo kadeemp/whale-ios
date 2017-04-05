@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let TabViewController = storyboard.instantiateViewController(withIdentifier: "TabVC")
         let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        keychain.clear()
+    
 
         try token = keychain.get("token")
         if  token != nil {
