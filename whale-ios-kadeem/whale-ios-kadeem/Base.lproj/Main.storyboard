@@ -215,7 +215,7 @@
         <!--Answers-->
         <scene sceneID="6x4-Dj-UMc">
             <objects>
-                <viewController storyboardIdentifier="AnswerViewController" id="HaV-Cf-F5O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnswerViewController" id="HaV-Cf-F5O" customClass="AnswerViewController" customModule="whale_ios_kadeem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C3L-BT-3Ut"/>
                         <viewControllerLayoutGuide type="bottom" id="uLm-EC-b0g"/>

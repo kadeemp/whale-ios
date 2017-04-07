@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import KeychainSwift
 
 enum Router: URLRequestConvertible {
     
@@ -15,9 +16,10 @@ enum Router: URLRequestConvertible {
     
    static let baseURL: String = "https://whale2-elixir.herokuapp.com/api/v1"
     
+    
     //MARK:- Router Case Delcaration
     case getUsers
-    case getAnswers
+    case getAnswers(per_page:Int, page:Int)
     case getAnswerComments(String)
     case getAnswerLikes(String)
     case getMyQuestions
@@ -80,7 +82,6 @@ enum Router: URLRequestConvertible {
         let parameters : [String:Any] = {
             switch self {
             case    .getUsers,
-                    .getAnswers,
                     .getAnswerComments,
                     .getAnswerLikes,
                     .getMyQuestions:
@@ -93,9 +94,9 @@ enum Router: URLRequestConvertible {
             case .createUser(let firstName,let lastName, let email,let password, let username):
                 return ["firstName": firstName,"lastName":lastName, "email": email,
                         "password":password,"username":username];
-            case .getAnswers():
-                return ["per_page": 10,
-            "IntPage": 0]
+            case .getAnswers(let per_page, let page):
+                return ["per_page": per_page,
+            "page": page]
              
 
             default:
@@ -108,6 +109,11 @@ enum Router: URLRequestConvertible {
         //Add cases when headers become necessary
         let headers: [String:String] = {
             switch self {
+            case .getAnswers(let per_page, let page):
+                 let token = APIClient.checkForToken()
+                    return ["Authorization":token]
+                
+                
             default:
                 return [:]
             }

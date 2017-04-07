@@ -41,7 +41,7 @@ import KeychainSwift
 //            ]
 //        }
 //    }
-//    
+//
 //}
 
 class APIClient {
@@ -51,14 +51,38 @@ class APIClient {
     //TODO:- Req Answer comments
     //TODO:- Req Answer Likes
     
-   
+    static func getAnswers(per_page:Int, page:Int) {
+        let urlRequestConvertible = Router.getAnswers(per_page:per_page, page:page)
+        
+        Alamofire.request(urlRequestConvertible).responseJSON { (response) in
+            print(response)
+            print("---------------")
+            print("---------------")
+            print("---------------")
+            switch response.result {
+            case .success:
+                let keychain = KeychainSwift()
+                let data = JSON(data: response.data!)
+                print(data)
+                
+                
+                
+            case .failure:
+                print("error occurred")
+                return
+            }
+        }
+        
+    }
+    
+    
     static func loginUser(email: String, password: String, completion: ((UserModel) -> Void)?) {
         
         let urlRequestConvertible = Router.loginUser(email: email,
                                                      password: password)
         
         Alamofire.request(urlRequestConvertible).responseJSON { (response) in
-           print(response)
+            print(response)
             print("---------------")
             print("---------------")
             print("---------------")
@@ -72,8 +96,8 @@ class APIClient {
                     fatalError("User data does not exist")
                 }
                 
-              let header = response.response!.allHeaderFields["Authorization"]!
-
+                let header = response.response!.allHeaderFields["Authorization"]!
+                
                 let headerHolder = String(describing: header)
                 keychain.set(headerHolder, forKey: "token")
                 completion?(user)
@@ -81,7 +105,7 @@ class APIClient {
                 
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.window?.rootViewController = vc
-
+                
                 
             case .failure:
                 print("error occurred")
@@ -128,18 +152,27 @@ class APIClient {
             }
         }
     }
-    static func getAnswers() {
-        
-    }
 
-    //MARK:- Variable Declaration
+    static func checkForToken() -> String {
+        let keychain = KeychainSwift()
+        if let token = keychain.get("token"){
+            return token
+        } else {
+            print("No token set")
+            
+        }
+      return ""
+    }
+}
+
+//MARK:- Variable Declaration
 
 //    var apiClient: APIClient
-//    
+//
 //    init(client: APIClient) {
 //        self.apiClient = client
 //    }
-//    
-    //MARK:- LOGIN
-    
-    }
+//
+//MARK:- LOGIN
+
+

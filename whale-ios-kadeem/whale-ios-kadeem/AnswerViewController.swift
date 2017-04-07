@@ -12,7 +12,7 @@ class AnswerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+APIClient.getAnswers(per_page: 4, page: 1)
         // Do any additional setup after loading the view.
     }
 
