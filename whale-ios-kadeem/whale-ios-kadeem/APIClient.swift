@@ -50,21 +50,54 @@ class APIClient {
     //TODO:- Request Answers by page
     //TODO:- Req Answer comments
     //TODO:- Req Answer Likes
-    
+    var commentCount:Int = 0
     static func getAnswers(per_page:Int, page:Int) {
         let urlRequestConvertible = Router.getAnswers(per_page:per_page, page:page)
         
         Alamofire.request(urlRequestConvertible).responseJSON { (response) in
-            print(response)
-            print("---------------")
+
             print("---------------")
             print("---------------")
             switch response.result {
             case .success:
-                let keychain = KeychainSwift()
+         
                 let data = JSON(data: response.data!)
-                print(data)
-                
+                //  print(data)
+               
+                let answerData = data["data"].array!
+                for answerJSON in answerData {
+                    let answer = AnswerModel(data: answerJSON)
+                    
+                    let answerText = answer!.answerContent
+                    let senderFirstName = answer!.senderFirstName
+                    let senderLastName = answer!.senderLastName
+                    let thumbnailURL = answer!.thumbnailURL
+                    let videoURL = answer!.videoURL
+                    let senderImageURL = answer!.senderImageURL
+                    let senderUsername = answer!.senderUsername
+                    
+                    let newAnswer = AnswerStruct(videoURL: videoURL,
+                                                 thumbnailURL: thumbnailURL,
+                                                 senderUsername: senderUsername,
+                                                 senderImageURL: senderImageURL,
+                                                 senderFirstName: senderFirstName,
+                                                 senderLastName: senderLastName,
+                                                 answerContent: answerText)
+                    GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
+                    print(newAnswer)
+
+                }
+
+//                for answerJSON in answerData {
+//                    let thumbnail = AnswerModel(data: answerJSON)
+//                    print(thumbnail!.thumbnailURL)
+//                    AnswerThumbnailManager.sharedInstance.add(item: thumbnail!)
+//                   // AnswerManager.sharedInstance.add(item: answer!.answerContent)
+//                    
+//                    //add reciever data to the answer model
+//                    //      print(videoURL,"|",thumbnailURL,"|",senderImageURL,"|",senderLastName,"|",senderFirstName,"|",answerContent, "|",senderUsername, "----------------------------------------")
+//                }
+//                    //                print(answerData)
                 
                 
             case .failure:
