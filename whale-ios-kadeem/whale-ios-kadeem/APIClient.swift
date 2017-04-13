@@ -88,17 +88,6 @@ class APIClient {
 
                 }
 
-//                for answerJSON in answerData {
-//                    let thumbnail = AnswerModel(data: answerJSON)
-//                    print(thumbnail!.thumbnailURL)
-//                    AnswerThumbnailManager.sharedInstance.add(item: thumbnail!)
-//                   // AnswerManager.sharedInstance.add(item: answer!.answerContent)
-//                    
-//                    //add reciever data to the answer model
-//                    //      print(videoURL,"|",thumbnailURL,"|",senderImageURL,"|",senderLastName,"|",senderFirstName,"|",answerContent, "|",senderUsername, "----------------------------------------")
-//                }
-//                    //                print(answerData)
-                
                 
             case .failure:
                 print("error occurred")

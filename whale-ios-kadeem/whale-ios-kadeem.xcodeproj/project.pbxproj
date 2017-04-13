@@ -14,10 +14,8 @@
 		5C6A9B8D1E8054F000FE189B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B8B1E8054F000FE189B /* LaunchScreen.storyboard */; };
 		5C6A9B9B1E8070D000FE189B /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B9A1E8070D000FE189B /* profileIcon.png */; };
 		5C709C101E89A1D300B23C8A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C709C0F1E89A1D300B23C8A /* APIClient.swift */; };
-		5C74F8B01E9B3393006BC6D7 /* AnswerContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74F8AF1E9B3393006BC6D7 /* AnswerContentManager.swift */; };
 		5C74F8B41E9BFB7C006BC6D7 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74F8B31E9BFB7C006BC6D7 /* AnswerTableViewCell.swift */; };
 		5C74F8B61E9BFC79006BC6D7 /* paginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74F8B51E9BFC79006BC6D7 /* paginationManager.swift */; };
-		5C837DBD1E9EA048006BBE6A /* AnswerThumbnailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C837DBC1E9EA048006BBE6A /* AnswerThumbnailManager.swift */; };
 		5C837DBF1E9EAA92006BBE6A /* GeneralAnswerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C837DBE1E9EAA92006BBE6A /* GeneralAnswerManager.swift */; };
 		5C9569ED1E85D29500F2B524 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9569EC1E85D29500F2B524 /* LoginViewController.swift */; };
 		5CBD97331E92383E00BAC237 /* activity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5CBD971E1E92383E00BAC237 /* activity.pdf */; };
@@ -61,10 +59,8 @@
 		5C6A9B8E1E8054F000FE189B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C6A9B9A1E8070D000FE189B /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profileIcon.png; path = ../profileIcon.png; sourceTree = "<group>"; };
 		5C709C0F1E89A1D300B23C8A /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		5C74F8AF1E9B3393006BC6D7 /* AnswerContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerContentManager.swift; sourceTree = "<group>"; };
 		5C74F8B31E9BFB7C006BC6D7 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		5C74F8B51E9BFC79006BC6D7 /* paginationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = paginationManager.swift; sourceTree = "<group>"; };
-		5C837DBC1E9EA048006BBE6A /* AnswerThumbnailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerThumbnailManager.swift; sourceTree = "<group>"; };
 		5C837DBE1E9EAA92006BBE6A /* GeneralAnswerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAnswerManager.swift; sourceTree = "<group>"; };
 		5C9569EC1E85D29500F2B524 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = UI/Storyboards/LoginViewController.swift; sourceTree = "<group>"; };
 		5CBD971E1E92383E00BAC237 /* activity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = activity.pdf; sourceTree = "<group>"; };
@@ -200,20 +196,10 @@
 		5C74F8AE1E9B335F006BC6D7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				5C837DBB1E9E9E6A006BBE6A /* Answer Manager */,
 				5C74F8B51E9BFC79006BC6D7 /* paginationManager.swift */,
 				5C837DBE1E9EAA92006BBE6A /* GeneralAnswerManager.swift */,
 			);
 			name = Managers;
-			sourceTree = "<group>";
-		};
-		5C837DBB1E9E9E6A006BBE6A /* Answer Manager */ = {
-			isa = PBXGroup;
-			children = (
-				5C74F8AF1E9B3393006BC6D7 /* AnswerContentManager.swift */,
-				5C837DBC1E9EA048006BBE6A /* AnswerThumbnailManager.swift */,
-			);
-			name = "Answer Manager";
 			sourceTree = "<group>";
 		};
 		5C9569E71E85D15A00F2B524 /* Networking */ = {
@@ -427,8 +413,6 @@
 				5CBD976D1E9569ED00BAC237 /* AnswerModel.swift in Sources */,
 				5C74F8B61E9BFC79006BC6D7 /* paginationManager.swift in Sources */,
 				5CD423BD1E8B98CA00478014 /* Router.swift in Sources */,
-				5C837DBD1E9EA048006BBE6A /* AnswerThumbnailManager.swift in Sources */,
-				5C74F8B01E9B3393006BC6D7 /* AnswerContentManager.swift in Sources */,
 				5C9569ED1E85D29500F2B524 /* LoginViewController.swift in Sources */,
 				5C74F8B41E9BFB7C006BC6D7 /* AnswerTableViewCell.swift in Sources */,
 				5C709C101E89A1D300B23C8A /* APIClient.swift in Sources */,
