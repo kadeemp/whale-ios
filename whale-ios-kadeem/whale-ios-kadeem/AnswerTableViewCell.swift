@@ -29,9 +29,10 @@ class AnswerTableViewCell: UITableViewCell {
 //    var avPlayerLayer: AVPlayerLayer!
 
     @IBOutlet weak var answerTextLabel: UILabel!
+    @IBOutlet weak var thumbnailButton: UIButton!
     
-    @IBOutlet weak var senderThumbnailImage: UIImageView!
-    @IBOutlet weak var videoPlayerView: UIView!
+
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

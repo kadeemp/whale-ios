@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5C236C901E9ED22B0092D172 /* AnswerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C236C8F1E9ED22B0092D172 /* AnswerStruct.swift */; };
+		5C2626291EA04C9E0058374E /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2626281EA04C9E0058374E /* VideoPlayerViewController.swift */; };
+		5C26262B1EA13CCB0058374E /* ActvityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C26262A1EA13CCB0058374E /* ActvityViewController.swift */; };
+		5C26262D1EA142440058374E /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C26262C1EA142440058374E /* QuestionModel.swift */; };
 		5C6A9B831E8054F000FE189B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A9B821E8054F000FE189B /* AppDelegate.swift */; };
 		5C6A9B881E8054F000FE189B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B861E8054F000FE189B /* Main.storyboard */; };
 		5C6A9B8A1E8054F000FE189B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A9B891E8054F000FE189B /* Assets.xcassets */; };
@@ -51,6 +54,9 @@
 /* Begin PBXFileReference section */
 		2EAF88AD4EA9A052E2CE53EB /* Pods-whale-ios-kadeem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whale-ios-kadeem.release.xcconfig"; path = "Pods/Target Support Files/Pods-whale-ios-kadeem/Pods-whale-ios-kadeem.release.xcconfig"; sourceTree = "<group>"; };
 		5C236C8F1E9ED22B0092D172 /* AnswerStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerStruct.swift; sourceTree = "<group>"; };
+		5C2626281EA04C9E0058374E /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		5C26262A1EA13CCB0058374E /* ActvityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActvityViewController.swift; sourceTree = "<group>"; };
+		5C26262C1EA142440058374E /* QuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		5C6A9B7F1E8054F000FE189B /* whale-ios-kadeem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "whale-ios-kadeem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6A9B821E8054F000FE189B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C6A9B871E8054F000FE189B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,7 +166,6 @@
 		5C709C121E8B926900B23C8A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5C74F8B31E9BFB7C006BC6D7 /* AnswerTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -172,6 +177,8 @@
 				5CBD97481E9240AA00BAC237 /* ProfileViewController.swift */,
 				5CBD974A1E92AED900BAC237 /* AnswerViewController.swift */,
 				5CBD974C1E92D09600BAC237 /* SignUpViewController.swift */,
+				5C2626281EA04C9E0058374E /* VideoPlayerViewController.swift */,
+				5C26262A1EA13CCB0058374E /* ActvityViewController.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				5CD423BE1E8BA17200478014 /* UserModel.swift */,
 				5CBD976C1E9569ED00BAC237 /* AnswerModel.swift */,
 				5C236C8F1E9ED22B0092D172 /* AnswerStruct.swift */,
+				5C26262C1EA142440058374E /* QuestionModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				5C74F8B51E9BFC79006BC6D7 /* paginationManager.swift */,
+				5C74F8B31E9BFB7C006BC6D7 /* AnswerTableViewCell.swift */,
 				5C837DBE1E9EAA92006BBE6A /* GeneralAnswerManager.swift */,
 			);
 			name = Managers;
@@ -408,8 +417,11 @@
 				5CBD97491E9240AA00BAC237 /* ProfileViewController.swift in Sources */,
 				5C236C901E9ED22B0092D172 /* AnswerStruct.swift in Sources */,
 				5CBD974B1E92AED900BAC237 /* AnswerViewController.swift in Sources */,
+				5C26262B1EA13CCB0058374E /* ActvityViewController.swift in Sources */,
+				5C2626291EA04C9E0058374E /* VideoPlayerViewController.swift in Sources */,
 				5C837DBF1E9EAA92006BBE6A /* GeneralAnswerManager.swift in Sources */,
 				5CBD974D1E92D09600BAC237 /* SignUpViewController.swift in Sources */,
+				5C26262D1EA142440058374E /* QuestionModel.swift in Sources */,
 				5CBD976D1E9569ED00BAC237 /* AnswerModel.swift in Sources */,
 				5C74F8B61E9BFC79006BC6D7 /* paginationManager.swift in Sources */,
 				5CD423BD1E8B98CA00478014 /* Router.swift in Sources */,

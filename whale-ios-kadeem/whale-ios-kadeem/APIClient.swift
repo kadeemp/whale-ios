@@ -84,10 +84,55 @@ class APIClient {
                                                  senderLastName: senderLastName,
                                                  answerContent: answerText)
                     GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
-                    print(newAnswer)
+                  //  print(newAnswer)
 
                 }
 
+                
+            case .failure:
+                print("error occurred")
+                return
+            }
+        }
+        
+    }
+    static func getQuestions(per_page:Int, page:Int) {
+        let urlRequestConvertible = Router.getQuestions(per_page:per_page, page:page)
+        
+        Alamofire.request(urlRequestConvertible).responseJSON { (response) in
+            
+            print("---------------")
+            print("---------------")
+            switch response.result {
+            case .success:
+                
+                let data = JSON(data: response.data!)
+                //  print(data)
+                
+                let questionData = data["data"].array!
+                for questionJSON in questionData {
+                    let question = AnswerModel(data: questionJSON)
+                    
+                    let questionsText = question!.answerContent
+                    let senderFirstName = question!.senderFirstName
+                    let senderLastName = question!.senderLastName
+                    let thumbnailURL = question!.thumbnailURL
+                    let videoURL = question!.videoURL
+                    let senderImageURL = question!.senderImageURL
+                    let senderUsername = question!.senderUsername
+                    
+                    let newAnswer = AnswerStruct(videoURL: videoURL,
+                                                 thumbnailURL: thumbnailURL,
+                                                 senderUsername: senderUsername,
+                                                 senderImageURL: senderImageURL,
+                                                 senderFirstName: senderFirstName,
+                                                 senderLastName: senderLastName,
+                                                 answerContent: questionsText)
+                    GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
+                    //  print(newAnswer)
+                    
+                }
+                
                 
             case .failure:
                 print("error occurred")

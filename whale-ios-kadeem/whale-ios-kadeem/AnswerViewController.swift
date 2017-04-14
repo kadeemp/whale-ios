@@ -35,7 +35,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func lastPagePressed(_ sender: Any) {
 
-        AnswerManager.sharedInstance.clear()
+//        AnswerManager.sharedInstance.clear()
         answersTable.reloadData()
         paginationController.sharedInstace.save(pageHolder:  paginationController.sharedInstace.pageHolder)
         paginationController.sharedInstace.load()
@@ -65,6 +65,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var normal : UIControlState
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnswerTableViewCell
         let answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
         let thumbURL = answer.thumbnailURL
@@ -73,7 +74,8 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         let session = URLSession.shared.dataTask(with: url!) {(data,response, error) in
             if let image = UIImage(data: data!) {
                 DispatchQueue.main.async {
-                    cell.senderThumbnailImage.image = image 
+                    cell.thumbnailButton.setBackgroundImage(image, for: UIControlState.normal)
+                    //cell.senderThumbnailImage.image = image
                     cell.setNeedsLayout()
                 }
             }
@@ -81,7 +83,8 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         session.resume()
         cell.answerTextLabel.text = answer.answerContent
-        
+  
+
         
         
         
@@ -90,54 +93,20 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "videoPlayerSegue", sender: self)
+    }
     
     
-    
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "videoPlayerSegue" {
+            if let indexPath = answersTable.indexPathForSelectedRow {
+                let destVC:VideoPlayerViewController = segue.destination as! VideoPlayerViewController
+                destVC.answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
+                self.show(destVC, sender: self)
+                
+            }
+        }
+    }
     
 }

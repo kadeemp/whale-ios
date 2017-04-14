@@ -22,7 +22,7 @@ enum Router: URLRequestConvertible {
     case getAnswers(per_page:Int, page:Int)
     case getAnswerComments(String)
     case getAnswerLikes(String)
-    case getMyQuestions
+    case getQuestions(per_page:Int, page:Int)
     
     case createUser(firstName:String,lastName:String, email:String,password:String, username:String)
     case postQuestions
@@ -37,7 +37,7 @@ enum Router: URLRequestConvertible {
                  .getAnswers,
                  .getAnswerComments,
                  .getAnswerLikes,
-                 .getMyQuestions:
+                 .getQuestions:
             return .get
             
             case .createUser,
@@ -66,7 +66,7 @@ enum Router: URLRequestConvertible {
             return "/answers/\(question_id)/likes"
         case .postAnswer(let question_id):
             return "questions/\(question_id)/answers"
-        case .getMyQuestions:
+        case .getQuestions:
             return "/questions"
         case .postQuestions:
             return "/questions"
@@ -83,8 +83,9 @@ enum Router: URLRequestConvertible {
             switch self {
             case    .getUsers,
                     .getAnswerComments,
-                    .getAnswerLikes,
-                    .getMyQuestions:
+                    .getAnswerLikes:
+
+                    
                 return [:]
                 
             //TODO: add cases for .createUser, .postAnswer, .postQuestion, .Answers
@@ -95,8 +96,14 @@ enum Router: URLRequestConvertible {
                 return ["firstName": firstName,"lastName":lastName, "email": email,
                         "password":password,"username":username];
             case .getAnswers(let per_page, let page):
-                return ["per_page": per_page,
-            "page": page]
+                return ["per_page": per_page, "page": page];
+            case .getQuestions(let per_page, let page):
+                return ["per_page": per_page,"page": page];
+//            case .getAnswers(let per_page, let page):
+//                return ["per_page": per_page,
+//                        "page": page];
+          
+                
              
 
             default:
@@ -111,7 +118,10 @@ enum Router: URLRequestConvertible {
             switch self {
             case .getAnswers(let per_page, let page):
                  let token = APIClient.checkForToken()
-                    return ["Authorization":token]
+                 return ["Authorization":token];
+            case .getAnswers(let per_page, let page):
+                let token = APIClient.checkForToken()
+                return ["Authorization":token];
                 
                 
             default:
