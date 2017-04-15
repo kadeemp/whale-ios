@@ -26,7 +26,7 @@ class AnswerModel {
     var answerContent:String
     
     //MARK:- Initialization
-    init?(data:JSON) {
+    init?(data: JSON) {
 
         guard let videoURLAddress = data["video_url"].string else {
             return nil

@@ -11,16 +11,28 @@ import UIKit
 class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var activityTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityTable.delegate = self
+        activityTable.dataSource = self
+        
         // Do any additional setup after loading the view.
+        APIClient.getQuestions(per_page: 3, page: 1)
+        activityTable.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+            activityTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+        @IBAction func nextPagePressed(_ sender: Any) {
+            APIClient.getQuestions(per_page: 3, page: 1)
+            activityTable.reloadData()
+    }
 
     /*
     // MARK: - Navigation
@@ -36,33 +48,20 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GeneralAnswerManager.sharedInstance.count
+        // activityTable.reloadData()
+        print(GeneralQuestionManager.sharedInstance.count)
+        return GeneralQuestionManager.sharedInstance.Array.count
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var normal : UIControlState
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnswerTableViewCell
-        let answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
-        let thumbURL = answer.thumbnailURL
+      
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! QuestionTableViewCell
+        let question = GeneralQuestionManager.sharedInstance.Array[indexPath.row]
         
-        let url = URL(string: String(describing: thumbURL))
-        let session = URLSession.shared.dataTask(with: url!) {(data,response, error) in
-            if let image = UIImage(data: data!) {
-                DispatchQueue.main.async {
-                    cell.thumbnailButton.setBackgroundImage(image, for: UIControlState.normal)
-                    //cell.senderThumbnailImage.image = image
-                    cell.setNeedsLayout()
-                }
-            }
-        }
-        
-        session.resume()
-        cell.answerTextLabel.text = answer.answerContent
-        
-        
-        
-        
+        cell.questionLabel.text = question.questionContent
+   
         
         // Configure the cell...
         

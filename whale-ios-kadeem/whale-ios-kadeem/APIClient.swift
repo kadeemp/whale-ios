@@ -51,7 +51,7 @@ class APIClient {
     //TODO:- Req Answer comments
     //TODO:- Req Answer Likes
     var commentCount:Int = 0
-    static func getAnswers(per_page:Int, page:Int) {
+    static func getAnswers(per_page:Int, page:Int, completion: ((([AnswerModel]) -> Void)?) ) {
         let urlRequestConvertible = Router.getAnswers(per_page:per_page, page:page)
         
         Alamofire.request(urlRequestConvertible).responseJSON { (response) in
@@ -64,29 +64,36 @@ class APIClient {
                 let data = JSON(data: response.data!)
                 //  print(data)
                
-                let answerData = data["data"].array!
-                for answerJSON in answerData {
-                    let answer = AnswerModel(data: answerJSON)
-                    
-                    let answerText = answer!.answerContent
-                    let senderFirstName = answer!.senderFirstName
-                    let senderLastName = answer!.senderLastName
-                    let thumbnailURL = answer!.thumbnailURL
-                    let videoURL = answer!.videoURL
-                    let senderImageURL = answer!.senderImageURL
-                    let senderUsername = answer!.senderUsername
-                    
-                    let newAnswer = AnswerStruct(videoURL: videoURL,
-                                                 thumbnailURL: thumbnailURL,
-                                                 senderUsername: senderUsername,
-                                                 senderImageURL: senderImageURL,
-                                                 senderFirstName: senderFirstName,
-                                                 senderLastName: senderLastName,
-                                                 answerContent: answerText)
-                    GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
-                  //  print(newAnswer)
-
+                guard let answerData = data["data"].array else {
+                    fatalError()
                 }
+                
+                let answers: [AnswerModel] = answerData.flatMap(AnswerModel.init)
+                
+                completion?(answers)
+                
+//                for answerJSON in answerData {
+//                    let answer = AnswerModel(data: answerJSON)
+//                    
+//                    let answerText = answer!.answerContent
+//                    let senderFirstName = answer!.senderFirstName
+//                    let senderLastName = answer!.senderLastName
+//                    let thumbnailURL = answer!.thumbnailURL
+//                    let videoURL = answer!.videoURL
+//                    let senderImageURL = answer!.senderImageURL
+//                    let senderUsername = answer!.senderUsername
+//                    
+//                    let newAnswer = AnswerStruct(videoURL: videoURL,
+//                                                 thumbnailURL: thumbnailURL,
+//                                                 senderUsername: senderUsername,
+//                                                 senderImageURL: senderImageURL,
+//                                                 senderFirstName: senderFirstName,
+//                                                 senderLastName: senderLastName,
+//                                                 answerContent: answerText)
+//                    GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
+//                  //  print(newAnswer)
+//
+                //}
 
                 
             case .failure:
@@ -107,31 +114,33 @@ class APIClient {
             case .success:
                 
                 let data = JSON(data: response.data!)
-                //  print(data)
+                //TODO - 
+                
+                
                 
                 let questionData = data["data"].array!
+                print(questionData)
                 for questionJSON in questionData {
-                    let question = AnswerModel(data: questionJSON)
+                let question = QuestionModel(data: questionJSON)
                     
-                    let questionsText = question!.answerContent
+                    let questionsText = question!.questionContent
                     let senderFirstName = question!.senderFirstName
                     let senderLastName = question!.senderLastName
-                    let thumbnailURL = question!.thumbnailURL
-                    let videoURL = question!.videoURL
                     let senderImageURL = question!.senderImageURL
                     let senderUsername = question!.senderUsername
                     
-                    let newAnswer = AnswerStruct(videoURL: videoURL,
-                                                 thumbnailURL: thumbnailURL,
+                    print("whatever whatever \(questionsText)")
+                    
+                    let newQuestion = QuestionStruct(
                                                  senderUsername: senderUsername,
                                                  senderImageURL: senderImageURL,
                                                  senderFirstName: senderFirstName,
                                                  senderLastName: senderLastName,
-                                                 answerContent: questionsText)
-                    GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
-                    //  print(newAnswer)
+                                                 questionContent: questionsText)
+                    GeneralQuestionManager.sharedInstance.Array.append(newQuestion)
+                      print(newQuestion)
                     
-                }
+               }
                 
                 
             case .failure:

@@ -25,27 +25,25 @@ class QuestionModel {
     
     //MARK:- Initialization
     init?(data:JSON) {
+    
         
-
-
-        
-        guard let senderUsername = data["question"]["sender"]["username"].string else {
-            return nil
+        guard let senderUsername = data["sender"]["username"].string else {
+            fatalError()
         }
-        guard let senderImageURLAddress = data["question"]["sender"]["image_url"].string else {
-            return nil
+        guard let senderImageURLAddress = data["sender"]["image_url"].string else {
+            fatalError()
         }
         guard let senderImageURL = URL(string: senderImageURLAddress) else {
-            return nil
+            fatalError()
         }
-        guard let senderFirstName = data["question"]["sender"]["first_name"].string else {
-            return nil
+        guard let senderFirstName = data["sender"]["first_name"].string else {
+            fatalError()
         }
-        guard let senderLastName = data["question"]["sender"]["last_name"].string else {
-            return nil
+        guard let senderLastName = data["sender"]["last_name"].string else {
+            fatalError()
         }
-        guard let answerContent = data["question"]["content"].string else {
-            return nil
+        guard let questionContent = data["content"].string else {
+            fatalError()
         }
         //MARK:- Assignment
 
@@ -54,7 +52,7 @@ class QuestionModel {
         self.senderImageURL = senderImageURL
         self.senderFirstName = senderFirstName
         self.senderLastName = senderLastName
-        self.questionContent = answerContent
+        self.questionContent = questionContent
         
     }
     

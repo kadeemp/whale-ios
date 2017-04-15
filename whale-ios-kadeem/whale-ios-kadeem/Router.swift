@@ -119,7 +119,7 @@ enum Router: URLRequestConvertible {
             case .getAnswers(let per_page, let page):
                  let token = APIClient.checkForToken()
                  return ["Authorization":token];
-            case .getAnswers(let per_page, let page):
+            case .getQuestions(let per_page, let page):
                 let token = APIClient.checkForToken()
                 return ["Authorization":token];
                 

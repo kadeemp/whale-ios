@@ -14,16 +14,18 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBOutlet weak var answersTable: UITableView!
      let currentpage = paginationController.sharedInstace.pageHolder
-    
+    var answerArray = [AnswerModel]()
     @IBAction func nextPagePressed(_ sender: Any) {
 
 
 //        paginationController.sharedInstace.save(pageHolder:  paginationController.sharedInstace.pageHolder)
 //        paginationController.sharedInstace.load()
-        let nextPage = paginationController.sharedInstace.nextPage(pageHolder: currentpage)
+       // let nextPage = paginationController.sharedInstace.nextPage(pageHolder: currentpage)
        
-        APIClient.getAnswers(per_page: 4, page: 1)
+        
         answersTable.reloadData()
+    //    APIClient.getQuestions(per_page: 3, page: 1)
+       
         
         
         
@@ -40,7 +42,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         paginationController.sharedInstace.save(pageHolder:  paginationController.sharedInstace.pageHolder)
         paginationController.sharedInstace.load()
         let lastPage = paginationController.sharedInstace.lastPage(pageHolder: currentpage)
-        APIClient.getAnswers(per_page: 2, page: lastPage)
+        // APIClient.getAnswers(per_page: 2, page: lastPage)
         answersTable.reloadData()
 
     }
@@ -49,25 +51,25 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         answersTable.delegate = self
         answersTable.dataSource = self
         //paginationController.sharedInstace.reset()
-        paginationController.sharedInstace.load()
-        APIClient.getAnswers(per_page: 2, page: 1)
+        
+        APIClient.getAnswers(per_page: 2, page: 1, completion: { (answers) in
+            self.answerArray = answers
+            self.answersTable.reloadData()
+        })
         
         answersTable.reloadData()
     }
 
-
     // MARK: - Table view data source
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GeneralAnswerManager.sharedInstance.count
+        return answerArray.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var normal : UIControlState
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnswerTableViewCell
-        let answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
+        let answer = answerArray[indexPath.row]
         let thumbURL = answer.thumbnailURL
         
         let url = URL(string: String(describing: thumbURL))
@@ -83,11 +85,6 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         session.resume()
         cell.answerTextLabel.text = answer.answerContent
-  
-
-        
-        
-        
         // Configure the cell...
         
         return cell
@@ -104,7 +101,6 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
                 let destVC:VideoPlayerViewController = segue.destination as! VideoPlayerViewController
                 destVC.answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
                 self.show(destVC, sender: self)
-                
             }
         }
     }
