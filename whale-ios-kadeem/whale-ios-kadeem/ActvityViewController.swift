@@ -11,6 +11,7 @@ import UIKit
 class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var activityTable: UITableView!
+    var questionArray = [QuestionModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +19,11 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
         activityTable.dataSource = self
         
         // Do any additional setup after loading the view.
-        APIClient.getQuestions(per_page: 3, page: 1)
-        activityTable.reloadData()
+        APIClient.getQuestions(per_page: 3, page: 1 ,completion: { (answers) in
+            self.questionArray = answers
+            self.activityTable.reloadData()
+        })
+
     }
     override func viewWillAppear(_ animated: Bool) {
             activityTable.reloadData()
@@ -30,7 +34,7 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
         @IBAction func nextPagePressed(_ sender: Any) {
-            APIClient.getQuestions(per_page: 3, page: 1)
+          //  APIClient.getQuestions(per_page: 3, page: 1)
             activityTable.reloadData()
     }
 
@@ -50,7 +54,7 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // activityTable.reloadData()
         print(GeneralQuestionManager.sharedInstance.count)
-        return GeneralQuestionManager.sharedInstance.Array.count
+        return questionArray.count
         
     }
     
@@ -58,7 +62,7 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! QuestionTableViewCell
-        let question = GeneralQuestionManager.sharedInstance.Array[indexPath.row]
+        let question = questionArray[indexPath.row]
         
         cell.questionLabel.text = question.questionContent
    

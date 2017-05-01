@@ -51,6 +51,7 @@ class APIClient {
     //TODO:- Req Answer comments
     //TODO:- Req Answer Likes
     var commentCount:Int = 0
+    
     static func getAnswers(per_page:Int, page:Int, completion: ((([AnswerModel]) -> Void)?) ) {
         let urlRequestConvertible = Router.getAnswers(per_page:per_page, page:page)
         
@@ -71,31 +72,7 @@ class APIClient {
                 let answers: [AnswerModel] = answerData.flatMap(AnswerModel.init)
                 
                 completion?(answers)
-                
-//                for answerJSON in answerData {
-//                    let answer = AnswerModel(data: answerJSON)
-//                    
-//                    let answerText = answer!.answerContent
-//                    let senderFirstName = answer!.senderFirstName
-//                    let senderLastName = answer!.senderLastName
-//                    let thumbnailURL = answer!.thumbnailURL
-//                    let videoURL = answer!.videoURL
-//                    let senderImageURL = answer!.senderImageURL
-//                    let senderUsername = answer!.senderUsername
-//                    
-//                    let newAnswer = AnswerStruct(videoURL: videoURL,
-//                                                 thumbnailURL: thumbnailURL,
-//                                                 senderUsername: senderUsername,
-//                                                 senderImageURL: senderImageURL,
-//                                                 senderFirstName: senderFirstName,
-//                                                 senderLastName: senderLastName,
-//                                                 answerContent: answerText)
-//                    GeneralAnswerManager.sharedInstance.Array.append(newAnswer)
-//                  //  print(newAnswer)
-//
-                //}
-
-                
+        
             case .failure:
                 print("error occurred")
                 return
@@ -103,7 +80,7 @@ class APIClient {
         }
         
     }
-    static func getQuestions(per_page:Int, page:Int) {
+    static func getQuestions(per_page:Int, page:Int, completion: ((([QuestionModel]) -> Void)?) ){
         let urlRequestConvertible = Router.getQuestions(per_page:per_page, page:page)
         
         Alamofire.request(urlRequestConvertible).responseJSON { (response) in
@@ -114,33 +91,12 @@ class APIClient {
             case .success:
                 
                 let data = JSON(data: response.data!)
-                //TODO - 
-                
-                
-                
-                let questionData = data["data"].array!
-                print(questionData)
-                for questionJSON in questionData {
-                let question = QuestionModel(data: questionJSON)
-                    
-                    let questionsText = question!.questionContent
-                    let senderFirstName = question!.senderFirstName
-                    let senderLastName = question!.senderLastName
-                    let senderImageURL = question!.senderImageURL
-                    let senderUsername = question!.senderUsername
-                    
-                    print("whatever whatever \(questionsText)")
-                    
-                    let newQuestion = QuestionStruct(
-                                                 senderUsername: senderUsername,
-                                                 senderImageURL: senderImageURL,
-                                                 senderFirstName: senderFirstName,
-                                                 senderLastName: senderLastName,
-                                                 questionContent: questionsText)
-                    GeneralQuestionManager.sharedInstance.Array.append(newQuestion)
-                      print(newQuestion)
-                    
-               }
+  
+                guard let questionData = data["data"].array else {
+                    fatalError()
+                }
+                let questions: [QuestionModel] = questionData.flatMap(QuestionModel.init)
+                completion?(questions)
                 
                 
             case .failure:

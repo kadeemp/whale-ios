@@ -10,7 +10,7 @@ import Foundation
 class GeneralAnswerManager {
     static let sharedInstance = GeneralAnswerManager()
     
-    var Array = [AnswerStruct]()
+    var Array = [AnswerModel]()
     
     
     var count:Int {
@@ -19,7 +19,7 @@ class GeneralAnswerManager {
         }
     }
     
-    func add(item:AnswerStruct) {
+    func add(item:AnswerModel) {
         
         Array.append(item)
         
@@ -40,7 +40,7 @@ class GeneralAnswerManager {
         ///
         ///
         ////
-        if let Array = UserDefaults.standard.object(forKey: "answerArray") as? [AnswerStruct] {
+        if let Array = UserDefaults.standard.object(forKey: "answerArray") as? [AnswerModel] {
             self.Array = Array
         }
         

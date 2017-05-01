@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = TabViewController
             self.window?.makeKeyAndVisible()
             
-        }else {
+        } else {
             self.window?.rootViewController = LoginViewController
             self.window?.makeKeyAndVisible()
         }

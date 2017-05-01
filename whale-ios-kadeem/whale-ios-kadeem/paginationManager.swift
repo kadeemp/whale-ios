@@ -16,13 +16,13 @@ import Foundation
     func nextPage(pageHolder:Int) -> Int {
         
         let newPage = self.pageHolder + 1
-        save(pageHolder: newPage)
-        load()
+        //save(pageHolder: newPage)
+        //load()
         print(#function)
         print(newPage)
         return newPage
     }
-    
+  
     func lastPage(pageHolder:Int) -> Int {
         if self.pageHolder != 1 {
             

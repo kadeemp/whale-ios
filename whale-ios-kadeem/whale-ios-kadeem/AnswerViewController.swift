@@ -15,7 +15,13 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var answersTable: UITableView!
      let currentpage = paginationController.sharedInstace.pageHolder
     var answerArray = [AnswerModel]()
+    
+    var page:Int = 1
     @IBAction func nextPagePressed(_ sender: Any) {
+        APIClient.getAnswers(per_page: 2, page: paginationController.sharedInstace.nextPage(pageHolder: page) , completion: { (answers) in
+            self.answerArray = answers
+            self.answersTable.reloadData()
+        })
 
 
 //        paginationController.sharedInstace.save(pageHolder:  paginationController.sharedInstace.pageHolder)
@@ -60,6 +66,9 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         answersTable.reloadData()
     }
 
+    @IBAction func thumbnailPressed(_ sender: Any) {
+                performSegue(withIdentifier: "videoPlayerSegue", sender: self)
+    }
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,16 +100,18 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "videoPlayerSegue", sender: self)
+        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "videoPlayerSegue" {
+        if segue.identifier! == "videoPlayerSegue" {
             if let indexPath = answersTable.indexPathForSelectedRow {
                 let destVC:VideoPlayerViewController = segue.destination as! VideoPlayerViewController
-                destVC.answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
-                self.show(destVC, sender: self)
+                destVC.answer = answerArray[indexPath.row]
+                
+            } else {
+                fatalError()
             }
         }
     }
