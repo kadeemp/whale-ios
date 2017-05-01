@@ -14,7 +14,7 @@ class VideoPlayerViewController: UIViewController {
     
     let avPlayer = AVPlayer()
     var avPlayerLayer: AVPlayerLayer!
-    var answer:AnswerStruct?
+    var answer:AnswerModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialization code

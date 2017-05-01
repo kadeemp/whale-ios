@@ -99,8 +99,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         if segue.identifier == "videoPlayerSegue" {
             if let indexPath = answersTable.indexPathForSelectedRow {
                 let destVC:VideoPlayerViewController = segue.destination as! VideoPlayerViewController
-                destVC.answer = GeneralAnswerManager.sharedInstance.Array[indexPath.row]
-                self.show(destVC, sender: self)
+                destVC.answer = answerArray[indexPath.row]
             }
         }
     }
