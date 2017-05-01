@@ -13,16 +13,22 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     //MARK:- IB Outlets
     
     @IBOutlet weak var answersTable: UITableView!
-     let currentpage = paginationController.sharedInstace.pageHolder
+     let currentpage = paginationManager.sharedInstace.pageHolder
     var answerArray = [AnswerModel]()
+    var page:Int = 1
+    
     @IBAction func nextPagePressed(_ sender: Any) {
 
 
-//        paginationController.sharedInstace.save(pageHolder:  paginationController.sharedInstace.pageHolder)
-//        paginationController.sharedInstace.load()
-       // let nextPage = paginationController.sharedInstace.nextPage(pageHolder: currentpage)
+//        paginationManager.sharedInstace.save(pageHolder:  paginationManager.sharedInstace.pageHolder)
+//        paginationManager.sharedInstace.load()
+       // let nextPage = paginationManager.sharedInstace.nextPage(pageHolder: currentpage)
        
-        
+        APIClient.getAnswers(per_page: 2, page: paginationManager.sharedInstace.nextPage(pageHolder: self.page), completion: { (answers) in
+            self.answerArray += answers //answers
+            self.answersTable.reloadData()
+        })
+
         answersTable.reloadData()
     //    APIClient.getQuestions(per_page: 3, page: 1)
        
@@ -32,16 +38,16 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     @IBAction func resetButtonPressed(_ sender: Any) {
-        paginationController.sharedInstace.reset()
+        paginationManager.sharedInstace.reset()
     }
     
     @IBAction func lastPagePressed(_ sender: Any) {
 
 //        AnswerManager.sharedInstance.clear()
         answersTable.reloadData()
-        paginationController.sharedInstace.save(pageHolder:  paginationController.sharedInstace.pageHolder)
-        paginationController.sharedInstace.load()
-        let lastPage = paginationController.sharedInstace.lastPage(pageHolder: currentpage)
+        paginationManager.sharedInstace.save(pageHolder:  paginationManager.sharedInstace.pageHolder)
+        paginationManager.sharedInstace.load()
+        let lastPage = paginationManager.sharedInstace.lastPage(pageHolder: currentpage)
         // APIClient.getAnswers(per_page: 2, page: lastPage)
         answersTable.reloadData()
 
@@ -50,14 +56,13 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         super.viewDidLoad()
         answersTable.delegate = self
         answersTable.dataSource = self
-        //paginationController.sharedInstace.reset()
+        //paginationManager.sharedInstace.reset()
         
         APIClient.getAnswers(per_page: 2, page: 1, completion: { (answers) in
             self.answerArray = answers
             self.answersTable.reloadData()
         })
-        
-        answersTable.reloadData()
+    
     }
 
     // MARK: - Table view data source

@@ -7,17 +7,16 @@
 //
 
 import Foundation
- class paginationController {
+ class paginationManager {
     
-    static let sharedInstace = paginationController()
+    static let sharedInstace = paginationManager()
     
     var pageHolder:Int = 1
     
     func nextPage(pageHolder:Int) -> Int {
         
         let newPage = self.pageHolder + 1
-        save(pageHolder: newPage)
-        load()
+
         print(#function)
         print(newPage)
         return newPage

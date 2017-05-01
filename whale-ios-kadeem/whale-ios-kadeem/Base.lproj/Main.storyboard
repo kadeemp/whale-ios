@@ -338,35 +338,29 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-XT-Aef">
                                 <rect key="frame" x="0.0" y="618" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="&lt;" id="ndj-MU-I7O">
-                                        <connections>
-                                            <action selector="lastPagePressed:" destination="KqE-0K-V7A" id="rz8-4T-j3e"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="&gt;" id="VNf-Tr-tJT">
-                                        <connections>
-                                            <action selector="nextPagePressed:" destination="KqE-0K-V7A" id="FIN-yq-VOd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="reset" id="DD0-zn-f4F">
-                                        <connections>
-                                            <action selector="resetButtonPressed:" destination="KqE-0K-V7A" id="AOK-ca-79l"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem title="&lt;" id="ndj-MU-I7O"/>
+                                    <barButtonItem title="&gt;" id="VNf-Tr-tJT"/>
+                                    <barButtonItem title="reset" id="DD0-zn-f4F"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2Fm-XT-Aef" firstAttribute="top" secondItem="ZNi-cD-3VQ" secondAttribute="top" id="4sB-hb-7Jy"/>
+                            <constraint firstItem="2Fm-XT-Aef" firstAttribute="trailing" secondItem="VGV-nw-eNA" secondAttribute="trailing" id="5gG-a7-RzQ"/>
                             <constraint firstItem="VGV-nw-eNA" firstAttribute="top" secondItem="ACt-7M-6qc" secondAttribute="bottom" constant="15" id="B7H-L0-nJT"/>
-                            <constraint firstItem="2Fm-XT-Aef" firstAttribute="top" secondItem="VGV-nw-eNA" secondAttribute="bottom" id="RhW-ez-pqy"/>
-                            <constraint firstItem="2Fm-XT-Aef" firstAttribute="trailing" secondItem="VGV-nw-eNA" secondAttribute="trailing" id="Zjx-U3-aYL"/>
+                            <constraint firstItem="2Fm-XT-Aef" firstAttribute="leading" secondItem="VGV-nw-eNA" secondAttribute="leading" id="PJU-fG-RXe"/>
                             <constraint firstItem="VGV-nw-eNA" firstAttribute="leading" secondItem="1M2-gC-i3V" secondAttribute="leading" id="bjY-bC-GYh"/>
                             <constraint firstAttribute="trailing" secondItem="VGV-nw-eNA" secondAttribute="trailing" id="ogu-PV-dJS"/>
-                            <constraint firstItem="2Fm-XT-Aef" firstAttribute="leading" secondItem="VGV-nw-eNA" secondAttribute="leading" id="stn-bn-wo6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FHy-6D-fgB"/>
+                    <navigationItem key="navigationItem" id="FHy-6D-fgB">
+                        <barButtonItem key="rightBarButtonItem" title="&gt;" id="Zoo-g7-val">
+                            <connections>
+                                <action selector="nextPagePressed:" destination="KqE-0K-V7A" id="mzS-xh-6Do"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="answersTable" destination="VGV-nw-eNA" id="feN-xv-6T7"/>
                         <segue destination="Rrj-ID-DYa" kind="show" identifier="videoPlayerSegue" id="mfR-2V-JMM"/>

@@ -103,7 +103,8 @@ class APIClient {
         }
         
     }
-    static func getQuestions(per_page:Int, page:Int) {
+    static func getQuestions(per_page:Int, page:Int, completion: ((([QuestionModel]) -> Void)?) ) {
+
         let urlRequestConvertible = Router.getQuestions(per_page:per_page, page:page)
         
         Alamofire.request(urlRequestConvertible).responseJSON { (response) in
@@ -117,30 +118,35 @@ class APIClient {
                 //TODO - 
                 
                 
+
+                guard let questionData  = data["data"].array else {
+                    fatalError()
+                }
                 
-                let questionData = data["data"].array!
-                print(questionData)
-                for questionJSON in questionData {
-                let question = QuestionModel(data: questionJSON)
-                    
-                    let questionsText = question!.questionContent
-                    let senderFirstName = question!.senderFirstName
-                    let senderLastName = question!.senderLastName
-                    let senderImageURL = question!.senderImageURL
-                    let senderUsername = question!.senderUsername
-                    
-                    print("whatever whatever \(questionsText)")
-                    
-                    let newQuestion = QuestionStruct(
-                                                 senderUsername: senderUsername,
-                                                 senderImageURL: senderImageURL,
-                                                 senderFirstName: senderFirstName,
-                                                 senderLastName: senderLastName,
-                                                 questionContent: questionsText)
-                    GeneralQuestionManager.sharedInstance.Array.append(newQuestion)
-                      print(newQuestion)
-                    
-               }
+                let questions: [QuestionModel] = questionData.flatMap(QuestionModel.init)
+                
+                completion?(questions)
+//                for questionJSON in questionData {
+//                let question = QuestionModel(data: questionJSON)
+//                    
+//                    let questionsText = question!.questionContent
+//                    let senderFirstName = question!.senderFirstName
+//                    let senderLastName = question!.senderLastName
+//                    let senderImageURL = question!.senderImageURL
+//                    let senderUsername = question!.senderUsername
+//                    
+//                    print("whatever whatever \(questionsText)")
+//                    
+//                    let newQuestion = QuestionStruct(
+//                                                 senderUsername: senderUsername,
+//                                                 senderImageURL: senderImageURL,
+//                                                 senderFirstName: senderFirstName,
+//                                                 senderLastName: senderLastName,
+//                                                 questionContent: questionsText)
+//                    GeneralQuestionManager.sharedInstance.Array.append(newQuestion)
+//                      print(newQuestion)
+//                    
+//               }
                 
                 
             case .failure:
