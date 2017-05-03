@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+
 class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var playerView: UIView!
     
@@ -21,7 +22,7 @@ class VideoPlayerViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-    }
+    } 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         avPlayerLayer = AVPlayerLayer(player: avPlayer)
@@ -43,7 +44,7 @@ class VideoPlayerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //let videoTrack = composition.addMutableTrack(
     /*
      // MARK: - Navigation
      

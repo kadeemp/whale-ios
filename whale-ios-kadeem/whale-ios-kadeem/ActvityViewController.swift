@@ -25,9 +25,12 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
         })
 
         activityTable.reloadData()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
             activityTable.reloadData()
+        self.tabBarController?.tabBar.isHidden = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +57,7 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // activityTable.reloadData()
-        print(GeneralQuestionManager.sharedInstance.count)
+  
         return questionArray.count
         
     }
@@ -71,6 +74,9 @@ class ActvityViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Configure the cell...
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ActivityCaptureSegue", sender: self)
     }
 
 }
